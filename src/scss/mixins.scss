@@ -1,0 +1,63 @@
+@import 'functions.scss';
+
+@mixin stateful-border($colour) {
+  border: 1px solid lighten($colour, 15%);
+  transition: border-color $base-delay ease;
+
+  &:hover, &:focus, &:focus-within {
+    border-color: $colour;
+  }
+}
+
+@mixin stateful-text($colour) {
+  color: darken($colour, 20%);
+  transition: color $base-delay ease;
+  
+  &:hover, &:focus {
+    color: $colour;
+  }
+}
+
+@mixin rounded-border($radius: $base-spacing) {
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin padded-block($padding: $base-spacing) {
+  display: inline-block;
+  padding: $padding;
+}
+
+@mixin button($colour: transparent) {
+  @include padded-block;
+  text-transform: none;
+  text-align: center;
+  white-space: nowrap;
+  color: contrasting-bw($colour);
+  background-color: lighten($colour, 15%);
+  cursor: pointer;
+  outline: none;
+
+  @if ($colour == transparent) {
+    transition: opacity $base-delay ease;
+    opacity: .6;
+
+    &:hover, &:focus {
+      opacity: 1;
+    }
+
+  } @else {
+    transition: background-color $base-delay ease;
+
+    &:hover, &:focus {
+      background-color: $colour;
+    }
+  }
+}
+
+@mixin input($colour: transparent) {
+  @include padded-block;
+  outline: none;
+  background: $colour;
+  border-color: transparent;
+}
