@@ -1,4 +1,5 @@
-# search-task
+# Splashed Unsplash
+Streamlined version of Unsplash's search results. It is also an attempt at reverse engineering Tailwind CSS by putting together my own utility-first CSS library through SCSS, mixins and globally-scoped styles. All in Vue 3.
 
 ## Project setup
 ```
@@ -9,21 +10,5 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
