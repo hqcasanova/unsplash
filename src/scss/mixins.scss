@@ -1,5 +1,10 @@
 @import 'functions.scss';
 
+@mixin rounded-border($radius: $base-spacing) {
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
 @mixin stateful-border($colour) {
   border: 1px solid lighten($colour, 15%);
   transition: border-color $base-delay ease;
@@ -18,9 +23,23 @@
   }
 }
 
-@mixin rounded-border($radius: $base-spacing) {
-  border-radius: $radius;
-  background-clip: padding-box;
+@mixin outlined-text($colour) {
+  color: transparent;
+  text-shadow:
+    1.41px 1.41px $colour,
+    2px 0 $colour,
+    1.41px -1.41px $colour,
+    0 -2px $colour,
+    -1.41px -1.41px $colour,
+    -2px 0 $colour,
+    -1.41px 1.41px $colour,
+    0 2px $colour;
+
+  
+  @supports (-webkit-text-stroke: 1px $colour) {
+    -webkit-text-stroke: 2px $colour;
+    text-shadow: none;
+  }
 }
 
 @mixin padded-block($padding: $base-spacing) {
@@ -60,4 +79,24 @@
   outline: none;
   background: $colour;
   border-color: transparent;
+}
+
+@mixin progress-bar($colour) {
+  animation: progress 1.5s cubic-bezier(.2,.5,.4,.7) infinite;
+  animation-delay: .1s;
+  background: linear-gradient(45deg, rgba($colour, 0), rgba($colour, .5) 25%, $colour 50%, rgba($colour, .5) 75%, rgba($colour, 0));
+  transform: translateX(100%);
+
+  @keyframes progress {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }

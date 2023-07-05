@@ -9,7 +9,8 @@
         v-for="image in images"
         :key="image.id"
         class="primary-bg"
-        :aria-label="image.description"
+        :alt="image.altDescription"
+        :description="image.description"
         :url="image.url"
         :username="image.username"
         :user-url="image.userUrl"
@@ -34,9 +35,10 @@ const isEmpty = computed(() => props.images.length === 0);
 </script>
 
 <style scoped lang="scss">
+@import "@/scss/variables.scss";
 .image-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: #{$base-spacing * 3};
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 </style>

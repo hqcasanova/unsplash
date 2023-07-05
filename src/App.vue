@@ -1,13 +1,11 @@
 <template>
-  <h1>
-    <span class="primary-text">Splashed</span>
-    Unsplash
-  </h1>
-  <image-search />
+  <app-header :init-query="''" />
+  <image-results />
 </template>
 
 <script setup lang="ts">
-import ImageSearch from '@/components/ImageSearch.vue';
+import AppHeader from '@/components/AppHeader.vue';
+import ImageResults from '@/components/ImageResults.vue';
 </script>
 
 <style lang="scss">
@@ -51,22 +49,16 @@ body {
   }
 
   /* APP STYLES */
-  main {
-    display: flex;
+  #app {
     padding: #{$base-spacing * 2};
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
+    text-align: center;
     background: $light-grey;
   }
 
   h1 {
     font-size: 2rem;
     text-align: center;
-  }
-
-  .image-search {
-    flex: 1;
   }
 
   /* CUSTOM CLASSES */
@@ -78,6 +70,12 @@ body {
   }
   .primary-text {
     color: $primary;
+  }
+  .primary-outlined {
+    @include outlined-text($primary);
+  }
+  .danger-text {
+    color: $danger;
   }
   .transparent-btn {
     @include button;
